@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="description" content="CreatiDesign: A Unified Multi-Conditional Diffusion Transformer for Creative Graphic Design">
+  <meta name="keywords" content="CreatiDesign, Generative Models, Diffusion Transformer, Graphic Design, Text to Image">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CreatiDesign | Fudan University, ByteDance Intelligent Creation</title>
+
+  <link href="./src/css" rel="stylesheet">
+  <link rel="stylesheet" href="./src/bulma.min.css">
+  <link rel="stylesheet" href="./src/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./src/academicons.min.css">
+  <link rel="stylesheet" href="./src/index.css">
+  <link rel="stylesheet" href="./src/carousel.css">
+
+  <script src="./src/jquery.min.js"></script>
+  <script defer="" src="./src/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <img src="images/CreatiDesign_logo.png" alt="CreatiDesign Logo" class="title-logo">
+            <span style="font-family: 'Bradley Hand', cursive;">
+              <b style="background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">CreatiDesign</b>: 
+              <span style="color: #8f9bbc;">A Unified Multi-Conditional Diffusion Transformer for</span>
+              <span class="u-underline" style="color: #6e8efb;">Creati</span><span style="color: #8f9bbc;">ve Graphic</span> 
+              <span class="u-underline" style="color: #a777e3;">Design</span>
+            </span>
+          </h1>
+          <div class="publication-authors" style="font-size: 22px;">
+            <span class="author-block">
+              <a href="https://huizhang0812.github.io/" target="_blank">Hui Zhang</a><sup>1, 2, *</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com.hk/citations?user=DUNijlcAAAAJ&hl=zh-CN" target="_blank">Dexiang Hong</a><sup>2, *</sup>,</span>
+                <span class="author-block">
+                <a href="javascript:void(0)" target="_blank" onclick="return false;">Maoke Yang</a><sup>2</sup>,</span>
+                <span class="author-block">
+                <a href="javascript:void(0)" target="_blank" onclick="return false;">Yutao Chen</a><sup>2</sup>,</span>
+                <span class="author-block">  
+                <a href="javascript:void(0)" target="_blank" onclick="return false;">Zhao Zhang</a><sup>2</sup>,</span>
+                <span class="author-block">  
+                <a href="javascript:void(0)" target="_blank" onclick="return false;">Jie Shao</a><sup>2, †</sup>,</span><br>
+                <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=LVsp9RQAAAAJ&hl=zh-CN" target="_blank">Xinglong Wu</a><sup>2</sup>,</span>
+                <span class="author-block">
+                <a href="https://zxwu.azurewebsites.net/" target="_blank">Zuxuan Wu</a><sup>1, ‡</sup>,</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=f3_FP8AAAAAJ" target="_blank">Yu-Gang Jiang</a><sup>1</sup>
+                </span>
+          </div>
+
+          <div class="publication-authors" style="font-size: 22px; margin-bottom: 10px;">
+            <span class="author-block" style="margin-right: 30px; margin-top: 10px; display: inline-block;"><sup>1</sup>Fudan University</span>
+            <span class="author-block" style="margin-bottom: 10px; display: inline-block;"><sup>2</sup>ByteDance Intelligent Creation</span><br> 
+            <span class="author-block" style="margin-right: 30px;"><sup>*</sup>Equal Contribution</span>
+            <span class="author-block" style="margin-right: 30px;"><sup>†</sup>Project Lead</span>
+            <span class="author-block"><sup>‡</sup>Corresponding Author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark"  target="_blank">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark"  target="_blank">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-database"></i>
+                </span>
+                <span>Dataset</span>
+              <!-- Benchmark Link. -->
+              <span class="link-block">
+                <a href="" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-database"></i>
+                </span>
+                <span>Benchmark</span>
+              </a>
+            </span>
+              <!-- Model Link. -->
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark"  target="_blank">
+                  <span class="icon">
+                    <img src="icon/ai.svg" alt="SVG Icon" style="width: 18px; height: 18px; background-color: #f5f5f5;">
+                  </span>
+                  <span>Model</span>
+                  </a>
+              </span>
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                    <img src="icon/hf.svg" alt="SVG Icon" style="width: 18px; height: 18px;">
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="column has-text-centered">
+    <div class="is-size-5 publication-authors">
+      <hr style="
+          width: 100%;
+          height: 0.7px;
+          background-color: rgba(255, 255, 255, 0.665);
+          margin-top: -15px;
+        ">
+      Use Diffusion Transformers to create graphic designs, covering movie posters, brand promotions, product advertisements, and social media content.
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div style="margin-left: 10px; margin-right: 10px;">
+      <div class="container is-fluid" style="margin-top: 0px">
+        <img src="./images/teaser.jpg" width="100%">
+      </div>
+            
+      <hr style="
+          width: 100%;
+          height: 0.7px;
+          background-color: rgba(255, 255, 255, 0.665);
+          margin-top: 5px;
+        ">
+  </div>
+  
+</section>
+
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Graphic design plays a vital role in visual communication across advertising, marketing, and multimedia entertainment.
+Prior work has explored automated graphic design generation using diffusion models, aiming to streamline creative workflows and democratize design capabilities.
+However, complex graphic design scenarios require accurately adhering to design intent specified by multiple heterogeneous user-provided elements (<i>e.g.</i> images, layouts, and texts), which pose multi-condition control challenges for existing methods.
+Specifically, previous single-condition control models demonstrate effectiveness only within their specialized domains but fail to generalize to other conditions, while existing multi-condition methods often lack fine-grained control over each sub-condition and compromise overall compositional harmony.
+To address these limitations, we introduce CreatiDesign, a systematic solution for automated graphic design covering both model architecture and dataset construction. 
+First, we design a unified multi-condition driven architecture that enables flexible and precise integration of heterogeneous design elements with minimal architectural modifications to the base diffusion model.
+Furthermore, to ensure that each condition precisely controls its designated image region and to avoid interference between conditions, we propose a multimodal attention mask mechanism.
+Additionally, we develop a fully automated pipeline for constructing graphic design datasets, and introduce a new dataset with 400K samples featuring multi-condition annotations, along with a comprehensive benchmark.
+Experimental results show that CreatiDesign outperforms existing models by a clear margin in faithfully adhering to user intent.
+          </p>
+         
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <div class="container is-max-desktop" style="margin-top: 25px">
+      <img src="./images/motivation.jpg" width="100%">
+    </div>
+    <div class="content has-text-centered" style="margin-top: 5px">
+      <p>
+        Graphic design is a multi-condition driven generation task that requires the precise and harmonious arrangement of heterogeneous elements, including primary visual elements (provided as images with positions), as well as secondary visual and textual elements (both specified by semantic descriptions and positions). Previous methods either support only a single type of condition (<i>e.g.</i> image-driven or layout-driven models) or lack accurate control over each sub-condition(<i>e.g.</i> multi-condition driven models), resulting in failure to strictly adhere to user design intent, as highlighted by the <span style="color: #FF8282;">red</span> and <span style="color: #C599B6;">purple</span> masks.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <!-- Comparison. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Unified Multi-Condition Driven Architecture</h2>
+      </div>
+    </div>
+    <!--/ Comparison. -->
+    <div class="container is-max-desktop" style="margin-top: 15px">
+      <img src="./images/architecture.jpg" width="100%">
+    </div>
+    <div class="content has-text-justified" style="margin-top: 10px">
+      <p style="font-size:16px; font:caption; font-family:Georgia, 'Times New Roman', Times, serif;">
+        CreatiDesign integrates image and semantic layout conditions through native multimodal attention. Multimodal attention mask ensures that each condition precisely controls its designated image regions while preventing leakage between conditions.
+      </p>
+  </div>
+
+  </div>
+</section>
+
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <!-- Comparison. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Graphic Design Datasets</h2>
+      </div>
+    </div>
+    <!--/ Comparison. -->
+    <div class="container is-max-desktop" style="margin-top: 15px">
+      <img src="./images/dataset.jpg" width="100%">
+    </div>
+    <div class="content has-text-justified" style="margin-top: 10px">
+      <p style="font-size:16px; font:caption; font-family:Georgia, 'Times New Roman', Times, serif;">
+        Automated pipeline for graphic design dataset construction. Upon this, we synthesize graphic design samples at scale, alleviating the data bottleneck for model training. As a result, we construct a new dataset of 400K samples with annotations for various conditions.
+      </p>
+  </div>
+
+  </div>
+</section>
+
+
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <!-- Comparison. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Quantitative comparison with State-of-the-Art Relevant Methods</h2>
+      </div>
+    </div>
+    <!--/ Comparison. -->
+    <div class="container is-max-desktop" style="margin-top: 15px">
+      <img src="./images/Quantitative_results.png" width="100%">
+    </div>
+    <div class="content has-text-justified" style="margin-top: 10px">
+      <p style="font-size:16px; font:caption; font-family:Georgia, 'Times New Roman', Times, serif;">
+          We compare CreatiDesign with three types of previous SOTA models: 
+          <span style="background-color: rgba(135, 206, 250, 0.3); padding: 0 3px;">multi-subject image-driven models</span>, 
+          <span style="background-color: rgba(255, 215, 0, 0.3); padding: 0 3px;">semantic layout-driven models</span>, and 
+          <span style="background-color: rgba(255, 182, 193, 0.3); padding: 0 3px;">multi-condition driven models</span>. 
+          The best results are shown in <b>bold</b>, and the 
+          <span style="background-color: rgba(152, 238, 142, 0.3); padding: 0 3px;">top-3 results</span> 
+          are highlighted. Our proposed method significantly enhances the graphic design capabilities of the 
+          <span style="background-color: rgba(211, 211, 211, 0.3); padding: 0 3px;">baseline</span>, 
+          achieves top-tier performance across all metrics, and shows a clear lead in average score.
+      </p>
+  </div>
+
+  </div>
+</section>
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <!-- Comparison. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Qualitative comparison with State-of-the-Art Relevant Methods</h2>
+      </div>
+    </div>
+    <!--/ Comparison. -->
+    <div class="container is-max-desktop" style="margin-top: 15px">
+      <img src="./images/Qualitative_results.jpg" width="100%">
+    </div>
+    <div class="content has-text-justified" style="margin-top: 10px">
+      <p style="font-size:16px; font:caption; font-family:Georgia, 'Times New Roman', Times, serif;">
+        Compared with previous multi-condition or single-condition models, CreatiDesign demonstrates stricter adherence to user intent, including high subject preservation and precise layout alignment. <span style="color: #C599B6;">Purple</span> masks: inconsistent or mispositioned subjects. <span style="color: #FF8282;">Red</span> masks: entities with incorrect semantics or locations. <span style="color: #A5A5A5;">Gray</span> masks: disharmonious background or foreground regions. 
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <!-- Plug and Play. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Free Lunch: Expanding to Editing Tasks</h2>
+      </div>
+    </div>
+    <!--/ Plug and Play. -->
+    <div class="container is-max-desktop" style="margin-top: 15px">
+      <img src="./images/loop_edit.jpg" width="100%">
+    </div>
+    <div class="content has-text-justified" style="margin-top: 10px">
+      <p style="font-size:16px; font:caption; font-family:Georgia, 'Times New Roman', Times, serif;">
+        CreatiDesign naturally extends beyond graphic design to a wide range of editing tasks without extra retraining. We demonstrate this capability via editing a series of movie posters. CreatiDesign consistently maintains subject identity, achieves accuracy layout control and overall visual harmony. In contrast, strong baselines such as Gemini2.0 frequently fail to preserve non-edited regions during sequential edits, often resulting in unwanted attribute changes to subjects or text, highlighting a lack of strict adherence to user intent.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="section" style="margin-top: -15px">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Citation BibTeX</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you find CreatiDesign useful for your research or applications, please cite our paper:
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="code-container" style="position: relative;">
+      <script>
+        function handle_copy_click() {
+          const icon_copy = document.getElementById('icon-copy');
+          const icon_done = document.getElementById('icon-done');
+          var code_text = document.getElementById("citation").innerText;
+
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(code_text)
+              .then(function() {
+                console.log("Code copied to clipboard!");
+                icon_copy.classList.toggle('hidden');
+                icon_done.classList.toggle('hidden');
+              })
+              .catch(function(err) {
+                console.error("Error copying code: " + err);
+              });
+          }
+        }
+      </script>
+      <div class="copy-clipboard-button" role="button" tabindex="0" onclick="handle_copy_click()">
+        <svg id="icon-copy" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="button-svg-icon">
+          <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+        </svg>
+        <svg id="icon-done" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="button-svg-icon hidden">
+          <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+        </svg>
+      </div>
+    <pre class="bib-tex"><code id="citation"></code></pre>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" style="margin-top: -10px">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center">
+            This page was inspired by <a href="https://github.com/bytedance/InfiniteYou/tree/gh-pages" target="_blank">Infinite You</a>. The source code of this project page can be found at
+            <a href="https://https://github.com/HuiZhang0812/CreatiDesign/tree/homepage" target="_blank">CreatiDesign Github</a></span>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body></html>
