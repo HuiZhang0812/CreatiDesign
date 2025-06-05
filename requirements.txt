@@ -1,0 +1,13 @@
+diffusers
+accelerate
+transformers
+sentencepiece
+protobuf
+bitsandbytes
+prodigyopt
+opencv-python
+beautifulsoup4
+flash-attn
+gradio
+
+
